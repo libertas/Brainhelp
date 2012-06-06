@@ -1,0 +1,29 @@
+#Open Brainhelp;
+#COPYLEFT;
+
+char *code,*p,dump;
+code=malloc(25000);
+p=code;
+&code=input();
+while(&p)
+{
+	dump=&p-"+";
+	dump=not(dump);
+	if(dump)
+	{
+		output("e1;");
+	}
+
+	dump=&p-"-";
+
+	dump=&p-">";
+
+	dump=&p-"<";
+
+	dump=&p-",";
+
+	dump=&p-".";
+
+	dump=&p-"[";
+
+	dump=&p-"]";
