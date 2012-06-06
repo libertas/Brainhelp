@@ -9,21 +9,37 @@ while(&p)
 {
 	dump=&p-"+";
 	dump=not(dump);
-	if(dump)
-	{
-		output("e1;");
-	}
+	if(dump) output("e1;");
 
 	dump=&p-"-";
-
-	dump=&p-">";
+	dump=not(dump);
+	if(dump) output("e2;");
 
 	dump=&p-"<";
+	dump=not(dump);
+	if(dump) output("e3;");
+
+	dump=&p-">";
+	dump=not(dump);
+	if(dump) output("e4;");
 
 	dump=&p-",";
+	dump=not(dump);
+	if(dump) output("e5;");
 
 	dump=&p-".";
+	dump=not(dump);
+	if(dump) output("e6;");
 
 	dump=&p-"[";
+	dump=not(dump);
+	if(dump) output("e7;");
 
 	dump=&p-"]";
+	dump=not(dump);
+	if(dump) output("e8;");
+
+	
+	p+=1;
+}
+
