@@ -20,7 +20,11 @@ USAGE:brainhelp SUBJECT OBJECT
 """
 
 
-class brainhelp(OBJECT,str):
+class compiler(object):
+	def compile(self,
+
+
+class brainhelp(object):
 	bh=""
 	bf=">>>>"
 	variables={}
@@ -69,23 +73,34 @@ class brainhelp(OBJECT,str):
 	
 	def plus_assign(self,variable,items=[]):
 		self.plus(items)
+		
 		self.go(variable)
 		bf+="<<[->>+<<]>>"
+		self.back()
 	
 	def minus_assign(self,variable,items=[]):
 		first=items[0]
 		self.plus(items[1:]
+		
 		try:
 			dump=first
 			first=str(first)
-			self.go(first)
-			bf+="[-<+<<<+>>>>]<<<<[->>>>+<<<<-]>>[->-<]>[-<+>]>>"
-			self.back()
+			if "\"" in dump:
+				first=char2int(first)
+				bf+="<"+"+"*first
+				bf+="<[->-<]>[-<+>]>"
+			else:
+				self.go(first)
+				bf+="[-<+<<<+>>>>]<<<<[->>>>+<<<<-]>>[->-<]>[-<+>]>>"
+				self.back()
 		except:
 			first=int(first)
 			bf+="<"+"+"*first
 			bf+="<[->-<]>[-<+>]>"
-		
+			
+		self.go(variable)
+		bf+="<<[->>+<<]>>"
+		self.back()
 
 
 
@@ -110,4 +125,12 @@ if __name__=="__main__":
 		exit()
 	
 	bf=brainhelp(INPUT)
+	bf.compile()
+	OUTPUT=bf.bf
 	
+	try:
+		open(OBJECT,'w').write(OUTPUT)
+	except:
+		print(OUTPUT)
+
+	exit()
