@@ -9,7 +9,7 @@ brainhelp:brainhelp.py $(Library)
 	chmod +x brainhelp
 
 $(Library):Shared.c
-	$(CC) $(CC_FLAGS)
+	$(CC) $(CC_FLAGS) Shared.c
 
 clean:
 	rm $(OBJECT) $(Library)
