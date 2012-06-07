@@ -5,10 +5,10 @@
 import platform
 import sys,ctypes.CDLL
 try:
-	char2int=CDLL.("Brainhelp_Shared.so").char2int
+	char2int=CDLL("Brainhelp_Shared.so").char2int
 except:
 	try:
-		char2int=CDLL.("./Brainhelp_Shared.so").char2int
+		char2int=CDLL("./Brainhelp_Shared.so").char2int
 	except:
 		print("Please install the libraries.")
 
@@ -21,7 +21,13 @@ USAGE:brainhelp SUBJECT OBJECT
 
 
 class compiler(object):
-	def compile(self,
+	
+	def __init__(self,code):
+		self.code=code
+	
+	def phrase(self):
+		pass
+	
 
 
 class brainhelp(object):
@@ -38,13 +44,18 @@ class brainhelp(object):
 			variables[i]=variable_position
 			variable_position+=1
 	
-	def go(self,variable):   #CORE PART
-		steps=variables[variable]
-		bf+="<"+"+"*steps   #write steps into the tape
+	#This is the CORE PART
+	def go(self,variable):
+		if variable.startswith("&"):
+			self.go(variable[1:])
+			bf+="[-<+<+>>]<[->+]>"
+			self.back()
+		else:
+			steps=variables[variable]
+			bf+="<"+"+"*steps   #write steps into the tape
 		bf+="[>[-<<<<+>>>>]"  #pointer to the left
 		bf+="<[->+<]"*3+">+>>-]>"   #movement
 		
-	
 	def back(self):
 		bf+="<<<[-"   #preparing
 		bf+="[-<+>]>"*3   #movement
@@ -53,7 +64,7 @@ class brainhelp(object):
 	def malloc(self,pointer,length):
 		self.go(pointer)
 		bf+="+"*variable_position
-		variable_position+=length
+		variable_position+=length+1
 	
 	def plus(self,itmes=[]):
 		for i in items:
@@ -101,6 +112,23 @@ class brainhelp(object):
 		self.go(variable)
 		bf+="<<[->>+<<]>>"
 		self.back()
+	
+	def input(self,variable):
+		self.go(variable)
+		bf+=",[>,]<[<]>>>>"
+		self.back()
+	
+	def output(self,variable):
+		self.go(variable)
+		bf+="[>]<[<]>>>>"
+		self.back()
+	
+	def compile(self):
+		funcs=compiler(bh)
+		funcs.phrase()
+		
+		
+		
 
 
 
