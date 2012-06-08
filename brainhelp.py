@@ -89,31 +89,32 @@ class brainhelp(object):
 		self.plus(items)
 		
 		self.go(variable)
-		self.bf+="<<[->>+<<]>>"
+		self.bf+="[-]<<[->>+<<]>>"
 		self.back()
-	
+	### [empty] [back][data][steps][pointer]
 	def minus_assign(self,variable,items=[]):
 		first=items[0]
 		self.plus(items[1:])
 		
-		try:
+		if type(first)==type('1'):
 			temp=first
 			first=str(first)
 			if '"' in temp:
-				first=ord(str(temp))
+				end=len(first)-1
+				first=ord(first[1:end])
 				self.bf+="<"+"+"*first
 				self.bf+="<[->-<]>[-<+>]>"
 			else:
 				self.go(first)
-				self.bf+="[-<+<<<+>>>>]<<<<[->>>>+<<<<-]>>[->-<]>[-<+>]>>"
+				self.bf+="[-<+<<<+>>>>]<<<<[->>>>+<<<<]>>[->-<]>[-<+>]>"
 				self.back()
-		except:
+		elif type(first)==type(1):
 			first=int(first)
 			self.bf+="<"+"+"*first
 			self.bf+="<[->-<]>[-<+>]>"
 			
 		self.go(variable)
-		self.bf+="<<[->>+<<]>>"
+		self.bf+="[-]<<[->>+<<]>>"
 		self.back()
 	
 	def input(self,variable):

@@ -1,8 +1,10 @@
-#include <stdio.h>
-
-int char2int(char c)
-{
-	int result;
-	result=(int) c;
-	return result;
-}
+bf.extern(['a','b'])
+bf.extern(['*c'])
+bf.malloc('c',2)
+bf.go('*c')
+bf.back()
+bf.plus_assign('*c',['"3"'])
+bf.minus_assign('a',['*c',1,1])
+bf.go('a')
+bf.bf+='.'
+n=0
