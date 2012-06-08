@@ -4,6 +4,15 @@
 
 import platform
 import sys
+from ctypes import CDLL
+try:
+	char2int=CDLL("Brainhelp_Shared.so").char2int
+except:
+	try:
+		char2int=CDLL("./Brainhelp_Shared.so").char2int
+	except:
+		print("Please install the libraries.")
+		exit()
 
 
 
@@ -73,7 +82,7 @@ class brainhelp(object):
 				backup=i
 				i=str(i)
 				if '"' in backup:
-					i=ord(str(i))
+					i=char2int(str(i))
 					self.bf+="<<"+"+"*i+">>"
 				else:
 					self.go(i)
@@ -98,7 +107,7 @@ class brainhelp(object):
 			dump=first
 			first=str(first)
 			if '"' in dump:
-				first=ord(str(dump))
+				first=char2int(str(dump))
 				self.bf+="<"+"+"*first
 				self.bf+="<[->-<]>[-<+>]>"
 			else:
