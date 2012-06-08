@@ -39,17 +39,17 @@ class brainhelp(object):
 		for i in items:
 			if i.startswith("*"):
 				self.extern([i[1:],])
-			self.variables[i]=self.variable_position
-			self.variable_position+=1
+			else:
+				self.variables[i]=self.variable_position
+				self.variable_position+=1
 	
 	#This is the CORE PART
 	def go(self,variable=0):
 		if type(variable)==type('*') and variable.startswith("*"):
 			self.go(variable[1:])
-			self.bf+="[-<+<<<+>>>>]<<<<[->>>>+<<<<]>>>>>"
+			self.bf+="[-<+<<<+>>>>]<<<<[->>>>+<<<<]>>>>"
 			self.back()
-			self.bf+="<"
-			self.go()	
+			self.bf+="<"	
 		elif variable!=0:
 			steps=self.variables[variable]
 			self.bf+="<"+"+"*steps   #write steps into the tape
@@ -66,22 +66,24 @@ class brainhelp(object):
 		self.go(pointer)
 		self.bf+="+"*self.variable_position
 		self.variable_position+=length+1
+		self.back()
 	
 	def plus(self,items=[]):
 		for i in items:
-			try:
+			if type(i) == type(1):
+				self.bf+="<<"+"+"*i+">>"
+			elif type(i) == type("1"):
 				backup=i
 				i=str(i)
 				if '"' in backup:
-					i=ord(str(i))
-					self.bf+="<<"+"+"*i+">>"
+					end=len(i)-1
+					i=ord(i[1:end])
+					self.plus([i])
 				else:
 					self.go(i)
 					self.bf+="[-<+<+>>]<[->+<]>"
 					self.back()
-			except:
-				i=int(i)
-				self.bf+="<<"+"+"*i+">>"
+			
 	
 	def plus_assign(self,variable,items=[]):
 		self.plus(items)
@@ -95,10 +97,10 @@ class brainhelp(object):
 		self.plus(items[1:])
 		
 		try:
-			dump=first
+			temp=first
 			first=str(first)
-			if '"' in dump:
-				first=ord(str(dump))
+			if '"' in temp:
+				first=ord(str(temp))
 				self.bf+="<"+"+"*first
 				self.bf+="<[->-<]>[-<+>]>"
 			else:
@@ -159,7 +161,7 @@ if __name__=="__main__":
 	
 	n=1
 	while n:
-		exec(raw_input(">"))
+		exec(raw_input())
 	
 	OUTPUT=bf.bf
 	
