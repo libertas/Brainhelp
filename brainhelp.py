@@ -91,7 +91,7 @@ class brainhelp(object):
 		self.go(variable)
 		self.bf+="[-]<<[->>+<<]>>"
 		self.back()
-	### [empty] [back][data][steps][pointer]
+	
 	def minus_assign(self,variable,items=[]):
 		first=items[0]
 		self.plus(items[1:])
@@ -126,6 +126,22 @@ class brainhelp(object):
 		self.go(variable)
 		self.bf+="[>]<[<]>>>>"
 		self.back()
+	
+	def startwhile(self,variable):
+		self.go(variable)
+		self.bf+="["
+		self.back()
+		
+	def endwhile(self,variable):
+		self.go(variable)
+		self.bf+="]"
+		self.back()
+	
+	def startif(self,variable):
+		self.startwhile(variable)
+	
+	def endif(self,variable=0):
+		self.bf+="<<<<]>>>>"
 	
 	def compile(self):
 		funcs=compiler(self.bh)
