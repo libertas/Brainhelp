@@ -31,10 +31,10 @@ class brainhelp(object):
 		for i in self.bh:
 			exec("self."+i)
 	
-	def extern(self,*items):
+	def bfchar(self,*items):
 		for i in items:
 			if i.startswith("*"):
-				self.extern([i[1:],])
+				self.bfchar([i[1:],])
 			else:
 				self.variables[i]=self.variable_position
 				self.variable_position+=1
@@ -64,7 +64,7 @@ class brainhelp(object):
 		self.variable_position+=length+1
 		self.back()
 	
-	def plus(self,*items):
+	def plus(self,items):
 		for i in items:
 			if type(i) == type(1):
 				self.bf+="<<"+"+"*i+">>"
@@ -83,7 +83,6 @@ class brainhelp(object):
 	
 	def plus_assign(self,variable,*items):
 		self.plus(items)
-		
 		self.go(variable)
 		self.bf+="[-]<<[->>+<<]>>"
 		self.back()
@@ -149,11 +148,13 @@ class brainhelp(object):
 	def endif(self,variable=0):
 		self.bf+="<<<<]>>>>"
 	
+	def opposite(self,variable):
+		
 	
 		
 
 def phrase(code=""):
-	IGNORE="""{}\n"""
+	IGNORE="""}	"""
 	result=[]
 	tmp=""
 	
@@ -162,7 +163,7 @@ def phrase(code=""):
 		if i in IGNORE:
 			pass
 			
-		elif i ==";":
+		elif i ==";" or i =="{":
 			result.append(tmp)
 			tmp=""
 		

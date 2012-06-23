@@ -1,10 +1,16 @@
-extern("a","b");
-plus_assign("a","1",1);
-plus_assign("b",'a',1);
-go("a");
-bf+=".";
-back();
-go("b");
-bf+=".";
+bfchar("*pointer","tmp"
+malloc("pointer",10000);
 
+
+startwhile("pointer")
+{
+
+plus_assign("tmp","*pointer");
+minus_assign("tmp","tmp",'"+"');
+opposite("tmp");
+startif("tmp")
+{
+	output("e1
+}
+endif();
 

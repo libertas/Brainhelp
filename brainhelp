@@ -64,7 +64,7 @@ class brainhelp(object):
 		self.variable_position+=length+1
 		self.back()
 	
-	def plus(self,*items):
+	def plus(self,items):
 		for i in items:
 			if type(i) == type(1):
 				self.bf+="<<"+"+"*i+">>"
@@ -83,7 +83,6 @@ class brainhelp(object):
 	
 	def plus_assign(self,variable,*items):
 		self.plus(items)
-		
 		self.go(variable)
 		self.bf+="[-]<<[->>+<<]>>"
 		self.back()
