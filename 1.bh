@@ -1,7 +1,10 @@
 extern("a","b");
 plus_assign("a","1",1);
-plus_assign("b",'"a"',1);
-output("a");
-output("b");
+plus_assign("b",'a',1);
+go("a");
+bf+=".";
+back();
+go("b");
+bf+=".";
 
 
