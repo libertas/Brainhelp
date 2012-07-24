@@ -10,7 +10,7 @@ minus_assign("tmp","tmp",'"+"');
 opposite("tmp");
 startif("tmp")
 {
-	output("e1
+	output("e1"
 }
 endif();
 
