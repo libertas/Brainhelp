@@ -20,7 +20,7 @@ class brainhelp(object):
 	### [empty] [back][data][steps][pointer]
 	
 	bh=[]
-	bf="###Struct###\n### [empty] [back][data][steps][pointer]###\n>>>>"
+	bf="###Compiled by Brainhelp###\n###Struct###\n### [empty] [back][data][steps][pointer]###\n>>>>"
 	variables={}
 	variable_position=0
 	
@@ -29,12 +29,13 @@ class brainhelp(object):
 	
 	def run(self):
 		for i in self.bh:
-			exec("self."+i)
+			if i != "":
+				exec("self."+i)
 	
 	def bfchar(self,*items):
 		for i in items:
-			if i.startswith("*"):
-				self.bfchar([i[1:],])
+			if str(i).startswith("*"):
+				self.bfchar(i[1:])
 			else:
 				self.variables[i]=self.variable_position
 				self.variable_position+=1
@@ -112,12 +113,12 @@ class brainhelp(object):
 		self.bf+="[-]<<[->>+<<]>>"
 		self.back()
 	
-	def input(self,variable):
+	def input(self,variable):#It's now unfriendly
 		self.go(variable)
-		self.bf+=",[>,]<[<]>>>>"
+		self.bf+="<[-]>,[>,]<[<]>"
 		self.back()
 	
-	def output(self,variable=0):
+	def output(self,variable=0):#It's now unfriendly
 		if not '"' in variable:
 			self.go(variable)
 			self.bf+="[>]<[<]>>>>"
@@ -128,7 +129,7 @@ class brainhelp(object):
 			self.bf+="<<<<"
 			for i in text:
 				self.bf+="+"*ord(i)
-				self.bf+="[-]"
+				self.bf+=".[-]"
 			self.bf+=">>>>"
 			
 	
@@ -155,7 +156,7 @@ class brainhelp(object):
 		
 
 def phrase(code=""):
-	IGNORE="""}	"""
+	IGNORE="""}	\n"""
 	result=[]
 	tmp=""
 	
