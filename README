@@ -1,0 +1,4 @@
+Usage:
+	Brainhelp input.bh output.bf
+	Brainfuck <output.bf >output.c
+	gcc -o output output.c
