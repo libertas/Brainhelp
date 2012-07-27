@@ -148,7 +148,7 @@ class brainhelp(object):
 	
 	def endif(self,variable=0):
 		self.bf+="<<<<]>>>>"
-		 
+	### [empty] [back][data][steps][pointer]	 
 	def opposite(self,variable):
 		self.go(variable)
 		self.bf+="<+>[<[-]>][-]<[->+<]>"
