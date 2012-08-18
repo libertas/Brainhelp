@@ -166,7 +166,7 @@ class brainhelp(object):
 	### [empty] [back][data][steps][pointer]	 
 	def opposite(self,variable):
 		self.go(variable)
-		self.bf+="<+>[<[-]>][-]<[->+<]>"
+		self.bf+="<+>[[<[-]]>[-<+>]]<[->+<]>"
 	
 		
 
