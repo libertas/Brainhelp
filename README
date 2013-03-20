@@ -16,16 +16,3 @@
  * 
  */
 
-
-Usage:
-
-	Brainhelp input.bh output.bf
-	Brainfuck <output.bf >output.c
-	gcc -o output output.c
-
-	or
-	(Maybe faster)
-	Brainhelp input.bh output.bf
-	bf2nasm <output.bf >output.asm
-	nasm -o output.o -f elf output.asm
-	gcc -o output output.o
