@@ -2,7 +2,7 @@
 #include <string.h>
 #define INPUT_LENGTH 256
 
-FILE *fpin, *fpout;
+FILE *fpin = NULL, *fpout = NULL;
 
 int go(int place)
 {
@@ -26,11 +26,8 @@ int go(int place)
 	return 0;
 }
 
-int on_mov()
+int bf_mov(int obj, int sub)
 {
-	int obj, sub;
-	fscanf(fpin, "%d", &obj);
-	fscanf(fpin, "%d", &sub);
 	go(sub);
 	fprintf(fpout, "[->+>+<<]>[-<+>]<\n");
 	go(obj);
@@ -44,23 +41,31 @@ int main(int argc, char **argv)	//USAGE: brainhelp [INPUT] [OUTPUT]
 	if (argc != 3) {
 		fpin = stdin;
 		fpout = stdout;
-	} else if ((fpin = fopen(argv[1], "r")) == 0){
+	} else if ((fpin = fopen(argv[1], "r")) != 0) {
 		fpout = fopen(argv[2], "w");
-	}
-	else {
+	} else {
 		fprintf(stderr, "brainhelp:input error\n");
 		return 1;
 	}
 
 	//starting
 	char buffer[INPUT_LENGTH];	// [pointer][helper][data][steps]
-	while (fscanf(fpin, "%s", buffer)) {
-		if (strcmp(buffer, "mov") == 0)
-			on_mov();
+	while (1) {
+		fscanf(fpin, "%s", buffer);
+
+		if (strcmp(buffer, "") == 0 || strcmp(buffer, "end") == 0)
+			break;
+
+		else if (strcmp(buffer, "mov") == 0) {
+			int sub, obj;
+			scanf("%d,%d", &obj, &sub);
+			bf_mov(obj, sub);
+		}
+
+		for (int i = 0; i < INPUT_LENGTH; i++)
+			buffer[i] = (char)0;
 	}
 
 	//ending
-	fclose(fpin);
-	fclose(fpout);
 	return 0;
 }
