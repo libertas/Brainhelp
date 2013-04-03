@@ -1,0 +1,12 @@
+getc 0
+movp 2,0
+movp 1,0
+
+if 2
+putc 2
+endif
+
+not 1
+if 1
+print you inputed NULL
+endif

@@ -119,12 +119,52 @@ int bf_not(int obj)
 int bf_print(char *msg)
 {
 	fprintf(fpout,">");
-	for(int i=0;i<strlen(msg)-1;i++){
+	for(int i=0;i<strlen(msg);i++){
 		fprintf(fpout,"[-]");
 		for(char j=0;j<msg[i];j++) fprintf(fpout,"+");
 		fprintf(fpout,".");
 	}
 	fprintf(fpout,"[-]++++++++++.<\n");
+	return 0;
+}
+
+int stack[PRINT_LENGTH]={0};
+int stack_c=0;
+int push(int p){
+	stack[stack_c]=p;
+	stack_c++;
+	return 0;
+}
+int pop(){
+	stack_c--;
+	return stack[stack_c+1];
+}
+
+int bf_if(int addr){
+	go(addr);
+	fprintf(fpout,"[\n");
+	push(addr);
+	return 0;
+}
+
+int bf_endif(){
+	int addr=pop();
+	go(addr);
+	fprintf(fpout,"[-]]\n");
+	return 0;
+}
+
+int bf_loop(int addr){
+	go(addr);
+	fprintf(fpout,"[\n");
+	push(addr);
+	return 0;
+}
+
+int bf_endloop(){
+	int addr=pop();
+	go(addr);
+	fprintf(fpout,"]\n");
 	return 0;
 }
 
@@ -208,6 +248,26 @@ int main(int argc, char **argv)	//USAGE: brainhelp [INPUT] [OUTPUT]
 			int obj;
 			fscanf(fpin,"%d",&obj);
 			bf_not(obj);
+		}
+		
+		else if (strcmp(buffer, "if") == 0){
+			int obj;
+			fscanf(fpin,"%d",&obj);
+			bf_if(obj);
+		}
+		
+		else if (strcmp(buffer, "endif") == 0){
+			bf_endif();
+		}
+		
+		else if (strcmp(buffer, "loop") == 0){
+			int obj;
+			fscanf(fpin,"%d",&obj);
+			bf_if(obj);
+		}
+		
+		else if (strcmp(buffer, "endloop") == 0){
+			bf_endif();
 		}
 		
 		else if (strcmp(buffer, "print") == 0){
