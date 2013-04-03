@@ -212,7 +212,7 @@ int main(int argc, char **argv)	//USAGE: brainhelp [INPUT] [OUTPUT]
 		
 		else if (strcmp(buffer, "print") == 0){
 			char msg[PRINT_LENGTH];
-			fscanf(fpin,"%[^\n]",msg);
+			fscanf(fpin," %[^\n]",msg);
 			bf_print(msg);
 		}
 		

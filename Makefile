@@ -17,6 +17,8 @@ indent:
 
 install:brainhelp
 	cp brainhelp $(destination)
+	chmod+x bf.py
+	cp bf.py /usr/local/bin/bf
 
 uninstall:
 	rm $(destination)
