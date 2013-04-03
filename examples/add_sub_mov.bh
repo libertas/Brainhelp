@@ -1,0 +1,15 @@
+mov 0,41
+putc 0
+addp 1,0
+subp 1,0
+movp 1,0
+sub 1,41
+mov 2,20
+mov 3,21
+addp 1,2
+addp 1,3
+putc 1
+mov 9,10
+putc 9
+putc 9
+print this program prints two ")"s
