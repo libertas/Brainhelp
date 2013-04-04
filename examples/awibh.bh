@@ -64,8 +64,8 @@ endif
 
 getc 0
 movp 2,0
-sub 2,10
-bfcode # this is for debugger
+sub 2,48 //every program must end with an "0" so that awibh can recognise it
+
 endloop
 
 mov 0,10
