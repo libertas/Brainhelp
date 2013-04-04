@@ -7,16 +7,10 @@ bh_destination = /usr/local/bin/bh
 bf_destination = /usr/local/bin/bf #bf interpreter
 awibh_destination = /usr/local/bin/awibh
 
-all:brainhelp bf brainhelp_pre awibh
+all:brainhelp bf awibh
 
 brainhelp:$(objects)
 	$(CC) -o brainhelp $(CFLAGS) $(objects)
-
-brainhelp_pre:brainhelp_pre.c
-	$(CC) -o brainhelp_pre $(CFLAGS) brainhelp_pre.c
-
-brainhelp_pre.c:preprocessor.l
-	$(LEX) -o brainhelp_pre.c preprocessor.l
 
 bf:bf.c
 	$(CC) -o bf $(CFLAGS) bf.c 2>/dev/null
