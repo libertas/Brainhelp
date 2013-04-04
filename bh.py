@@ -1,4 +1,5 @@
 #! /usr/bin/env python3
+# Brainhelp compiler
 from sys import argv
 from os import system
 try:

@@ -1,4 +1,5 @@
 #include <stdio.h>;
+//This is a Brainfuck interpreter
 
 int p, r, q;
 char a[0xFFFF], f[0xFFFF], b, o, *s = f;
