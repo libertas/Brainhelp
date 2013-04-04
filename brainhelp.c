@@ -234,7 +234,7 @@ int main(int argc, char **argv)	//USAGE: brainhelp [INPUT] [OUTPUT]
 		else if (strcmp(buffer, "add") == 0) {
 			int obj, number;
 			fscanf(fpin, "%d,%d", &obj, &number);
-			bf_addp(obj, number);
+			bf_add(obj, number);
 		}
 
 		else if (strcmp(buffer, "subp") == 0) {

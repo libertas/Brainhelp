@@ -64,9 +64,7 @@ endif
 
 getc 0
 movp 2,0
-
-not 2
-not 2
+sub 2,10
 bfcode # this is for debugger
 endloop
 
