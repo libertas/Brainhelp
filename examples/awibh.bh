@@ -1,0 +1,77 @@
+print #include <stdio.h>
+print int main(){
+print char tape[30000]={0};
+print int p=0;
+
+getc 0
+movp 2,0
+loop 2
+movp 1,0
+sub 1,43
+not 1
+if 1
+print tape[p]++;
+endif
+
+movp 1,0
+sub 1,45
+not 1
+if 1
+print tape[p]--;
+endif
+
+movp 1,0
+sub 1,60
+not 1
+if 1
+print p--;
+endif
+
+movp 1,0
+sub 1,62
+not 1
+if 1
+print p++;
+endif
+
+movp 1,0
+sub 1,44
+not 1
+if 1
+print tape[p]=getchar();
+endif
+
+movp 1,0
+sub 1,46
+not 1
+if 1
+print putchar(tape[p]);
+endif
+
+movp 1,0
+sub 1,91
+not 1
+if 1
+print while(tape[p]){
+endif
+
+movp 1,0
+sub 1,93
+not 1
+if 1
+print }
+endif
+
+getc 0
+movp 2,0
+
+not 2
+not 2
+bfcode # this is for debugger
+endloop
+
+mov 0,10
+putc 0
+
+print return 0;
+print }

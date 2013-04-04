@@ -1,7 +1,7 @@
 #include <stdio.h>;
 
 int p, r, q;
-char a[5000], f[5000], b, o, *s = f;
+char a[0xFFFF], f[0xFFFF], b, o, *s = f;
 
 void interpret(char *c)
 {

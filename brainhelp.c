@@ -51,6 +51,7 @@ int rd2p(int obj)
 int bf_movp(int obj, int sub)
 {
 	p2rd(sub);
+	bf_clean(obj);
 	rd2p(obj);
 	return 0;
 }
@@ -279,7 +280,7 @@ int main(int argc, char **argv)	//USAGE: brainhelp [INPUT] [OUTPUT]
 		else if (strcmp(buffer, "loop") == 0) {
 			int obj;
 			fscanf(fpin, "%d", &obj);
-			bf_if(obj);
+			bf_loop(obj);
 		}
 
 		else if (strcmp(buffer, "endloop") == 0) {
