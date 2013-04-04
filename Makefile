@@ -2,6 +2,7 @@ CC = cc
 CFLAGS = -O2 -march=native -std=c99
 objects = brainhelp.o
 destination = /usr/local/bin/brainhelp
+bh_destination = /usr/local/bin/bh
 
 brainhelp:brainhelp.o
 	$(CC) -o brainhelp $(CFLAGS) $(objects)
@@ -15,10 +16,11 @@ clean:
 indent:
 	indent -npro -kr -i8 -ts8 -sob -l80 -ss -ncs -cp1 -o brainhelp.c brainhelp.c
 
-install:brainhelp
+install:brainhelp bh.py
 	cp brainhelp $(destination)
-	chmod +x bf.py
-	cp bf.py /usr/local/bin/bf
+	cp bh.py $(bh_destination)
+	chmod +x $(bh_destination)
 
 uninstall:
-	rm $(destination)
+	-rm $(destination)
+	-rm $(bh_destination)
