@@ -59,7 +59,7 @@ int bf_addp(int obj, int sub)
 {
 	p2rd(sub);
 	go(obj);
-	fprintf(fpout,">>[-<<+>>]<<\n");//add rd to p
+	fprintf(fpout, ">>[-<<+>>]<<\n");	//add rd to p
 	return 0;
 }
 
@@ -83,7 +83,8 @@ int bf_subp(int obj, int sub)
 int bf_sub(int obj, int number)
 {
 	go(obj);
-	for(int i=0;i<number;i++) fprintf(fpout, "-");
+	for (int i = 0; i < number; i++)
+		fprintf(fpout, "-");
 	fprintf(fpout, "\n");
 	return 0;
 }
@@ -91,80 +92,95 @@ int bf_sub(int obj, int number)
 int bf_mov(int obj, int number)	//move the number into the memory
 {
 	bf_clean(obj);
-	bf_add(obj,number);
+	bf_add(obj, number);
 	return 0;
 }
 
 int bf_putc(int obj)
 {
 	go(obj);
-	fprintf(fpout,".\n");
+	fprintf(fpout, ".\n");
 	return 0;
 }
 
 int bf_getc(int obj)
 {
 	go(obj);
-	fprintf(fpout,",\n");
+	fprintf(fpout, ",\n");
 	return 0;
 }
 
 int bf_not(int obj)
 {
 	go(obj);
-	fprintf(fpout,"[->+<]+>[<[-]>-]<\n");
+	fprintf(fpout, "[->+<]+>[<[-]>[-]]<\n");
 	return 0;
 }
 
 int bf_print(char *msg)
 {
-	fprintf(fpout,">");
-	for(int i=0;i<strlen(msg);i++){
-		fprintf(fpout,"[-]");
-		for(char j=0;j<msg[i];j++) fprintf(fpout,"+");
-		fprintf(fpout,".");
+	fprintf(fpout, ">");
+	for (int i = 0; i < strlen(msg); i++) {
+		for (char j = 0; j < msg[i]; j++)
+			fprintf(fpout, "+");
+		fprintf(fpout, ".");
+		fprintf(fpout, "[-]");
 	}
-	fprintf(fpout,"[-]++++++++++.<\n");
+	fprintf(fpout, "++++++++++.[-]<\n");
 	return 0;
 }
 
-int stack[PRINT_LENGTH]={0};
-int stack_c=0;
-int push(int p){
-	stack[stack_c]=p;
+int stack[PRINT_LENGTH] = { 0 };
+
+int stack_c = 0;
+int push(int p)
+{
+	stack[stack_c] = p;
 	stack_c++;
 	return 0;
 }
-int pop(){
+
+int pop()
+{
 	stack_c--;
-	return stack[stack_c+1];
+	return stack[stack_c + 1];
 }
 
-int bf_if(int addr){
+int bf_if(int addr)
+{
 	go(addr);
-	fprintf(fpout,"[\n");
+	fprintf(fpout, "if[\n");
 	push(addr);
 	return 0;
 }
 
-int bf_endif(){
-	int addr=pop();
+int bf_endif()
+{
+	int addr = pop();
 	go(addr);
-	fprintf(fpout,"[-]]\n");
+	fprintf(fpout, "[-]]endif\n");
 	return 0;
 }
 
-int bf_loop(int addr){
+int bf_loop(int addr)
+{
 	go(addr);
-	fprintf(fpout,"[\n");
+	fprintf(fpout, "loop[\n");
 	push(addr);
 	return 0;
 }
 
-int bf_endloop(){
-	int addr=pop();
+int bf_endloop()
+{
+	int addr = pop();
 	go(addr);
-	fprintf(fpout,"]\n");
+	fprintf(fpout, "]endloop\n");
+	return 0;
+}
+
+int bf_code(char *code)
+{
+	fprintf(fpout, "\nhard writted:%s\n", code);
 	return 0;
 }
 
@@ -231,53 +247,59 @@ int main(int argc, char **argv)	//USAGE: brainhelp [INPUT] [OUTPUT]
 			fscanf(fpin, "%d,%d", &obj, &number);
 			bf_sub(obj, number);
 		}
-		
-		else if (strcmp(buffer, "putc") == 0){
+
+		else if (strcmp(buffer, "putc") == 0) {
 			int obj;
-			fscanf(fpin,"%d",&obj);
+			fscanf(fpin, "%d", &obj);
 			bf_putc(obj);
 		}
-		
-		else if (strcmp(buffer, "getc") == 0){
+
+		else if (strcmp(buffer, "getc") == 0) {
 			int obj;
-			fscanf(fpin,"%d",&obj);
+			fscanf(fpin, "%d", &obj);
 			bf_getc(obj);
 		}
-		
-		else if (strcmp(buffer, "not") == 0){
+
+		else if (strcmp(buffer, "not") == 0) {
 			int obj;
-			fscanf(fpin,"%d",&obj);
+			fscanf(fpin, "%d", &obj);
 			bf_not(obj);
 		}
-		
-		else if (strcmp(buffer, "if") == 0){
+
+		else if (strcmp(buffer, "if") == 0) {
 			int obj;
-			fscanf(fpin,"%d",&obj);
+			fscanf(fpin, "%d", &obj);
 			bf_if(obj);
 		}
-		
-		else if (strcmp(buffer, "endif") == 0){
+
+		else if (strcmp(buffer, "endif") == 0) {
 			bf_endif();
 		}
-		
-		else if (strcmp(buffer, "loop") == 0){
+
+		else if (strcmp(buffer, "loop") == 0) {
 			int obj;
-			fscanf(fpin,"%d",&obj);
+			fscanf(fpin, "%d", &obj);
 			bf_if(obj);
 		}
-		
-		else if (strcmp(buffer, "endloop") == 0){
-			bf_endif();
+
+		else if (strcmp(buffer, "endloop") == 0) {
+			bf_endloop();
 		}
-		
-		else if (strcmp(buffer, "print") == 0){
+
+		else if (strcmp(buffer, "print") == 0) {
 			char msg[PRINT_LENGTH];
-			fscanf(fpin," %[^\n]",msg);
+			fscanf(fpin, " %[^\n]", msg);
 			bf_print(msg);
 		}
-		
-		else{
-			printf("Error:%s\n",buffer);
+
+		else if (strcmp(buffer, "bfcode") == 0) {
+			char msg[PRINT_LENGTH];
+			fscanf(fpin, " %[^\n]", msg);
+			bf_code(msg);
+		}
+
+		else {
+			printf("Error:%s\n", buffer);
 			break;
 		}
 
