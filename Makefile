@@ -25,7 +25,6 @@ awibh:examples/awibh.bh
 clean:
 	-rm $(objects) brainhelp
 	-rm bf
-	-rm brainhelp_pre.c brainhelp_pre
 	-rm awibh
 
 indent:
