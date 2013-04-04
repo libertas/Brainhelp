@@ -309,5 +309,6 @@ int main(int argc, char **argv)	//USAGE: brainhelp [INPUT] [OUTPUT]
 	}
 
 	//ending
+	fprintf(fpout,"\nEOF:0\n");
 	return 0;
 }

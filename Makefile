@@ -38,7 +38,7 @@ indent:
 	indent -npro -kr -i8 -ts8 -sob -l80 -ss -ncs -cp1 -o brainhelp.c brainhelp.c
 	indent -npro -kr -i8 -ts8 -sob -l80 -ss -ncs -cp1 -o bf.c bf.c
 
-install:brainhelp bh.py bf
+install:all
 	cp brainhelp $(destination)
 	cp bh.py $(bh_destination)
 	chmod +x $(bh_destination)
