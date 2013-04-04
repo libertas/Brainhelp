@@ -143,7 +143,7 @@ int push(int p)
 int pop()
 {
 	stack_c--;
-	return stack[stack_c + 1];
+	return stack[stack_c];
 }
 
 int bf_if(int addr)
