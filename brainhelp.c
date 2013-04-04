@@ -299,7 +299,7 @@ int main(int argc, char **argv)	//USAGE: brainhelp [INPUT] [OUTPUT]
 		}
 
 		else {
-			printf("Error:%s\n", buffer);
+			fprintf(stderr,"Error:%s\n", buffer);
 			break;
 		}
 
