@@ -6,6 +6,7 @@ print int p=0;
 getc 0
 movp 2,0
 loop 2
+
 movp 1,0
 sub 1,43
 not 1
@@ -64,7 +65,8 @@ endif
 
 getc 0
 movp 2,0
-sub 2,48 //every program must end with an "0" so that awibh can recognise it
+sub 2,48
+bfcode every program must end with an "0" so that awibh can recognise it
 
 endloop
 
