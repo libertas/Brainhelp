@@ -188,12 +188,23 @@ int bf_code(char *code)
 int main(int argc, char **argv)	//USAGE: brainhelp [INPUT] [OUTPUT]
 {
 	//checking args
-	if (argc != 3) {
+	if (argc > 3)
+		fprintf(stderr, "Too many arguments\n");
+	else if (argc != 2 && argc != 3) {
 		fpin = stdin;
 		fpout = stdout;
-	} else if ((fpin = fopen(argv[1], "r")) != 0) {
-		fpout = fopen(argv[2], "w");
+	} else if (argc == 3) {
+		if ((fpin = fopen(argv[1], "r")) != 0)
+			fpout = fopen(argv[2], "w");
+		else
+			goto l_error;
+	} else if (argc == 2) {
+		if ((fpin = fopen(argv[1], "r")) != 0)
+			fpout = stdout;
+		else
+			goto l_error;
 	} else {
+	      l_error:
 		fprintf(stderr, "brainhelp:input error\n");
 		return 1;
 	}
@@ -299,8 +310,11 @@ int main(int argc, char **argv)	//USAGE: brainhelp [INPUT] [OUTPUT]
 			bf_code(msg);
 		}
 
+		else if (buffer[0] == '/' || buffer[1] == '/')
+			fscanf(fpin, "%[^\n]", buffer);
+
 		else {
-			fprintf(stderr,"Error:%s\n", buffer);
+			fprintf(stderr, "Error:%s\n", buffer);
 			break;
 		}
 
@@ -309,6 +323,6 @@ int main(int argc, char **argv)	//USAGE: brainhelp [INPUT] [OUTPUT]
 	}
 
 	//ending
-	fprintf(fpout,"\nEOF:0\n");
+	fprintf(fpout, "\nEOF:0\n");
 	return 0;
 }
