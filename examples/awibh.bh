@@ -8,56 +8,56 @@ movp 2,0
 loop 2
 
 movp 1,0
-sub 1,43
+sub 1,43 //compare the character to +
 not 1
 if 1
 print tape[p]++;
 endif
 
 movp 1,0
-sub 1,45
+sub 1,45 //compare the character to -
 not 1
 if 1
 print tape[p]--;
 endif
 
 movp 1,0
-sub 1,60
+sub 1,60 //compare the character to <
 not 1
 if 1
 print p--;
 endif
 
 movp 1,0
-sub 1,62
+sub 1,62 //compare the character to >
 not 1
 if 1
 print p++;
 endif
 
 movp 1,0
-sub 1,44
+sub 1,44 //compare the character to ,
 not 1
 if 1
 print tape[p]=getchar();
 endif
 
 movp 1,0
-sub 1,46
+sub 1,46 //compare the character to .
 not 1
 if 1
 print putchar(tape[p]);
 endif
 
 movp 1,0
-sub 1,91
+sub 1,91 //compare the character to [
 not 1
 if 1
 print while(tape[p]){
 endif
 
 movp 1,0
-sub 1,93
+sub 1,93 //compare the character to ]
 not 1
 if 1
 print }
@@ -65,7 +65,7 @@ endif
 
 getc 0
 movp 2,0
-sub 2,48
+sub 2,48 //compare the character to 0,every brainfuck program must end with an 0
 
 endloop
 
