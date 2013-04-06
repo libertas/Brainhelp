@@ -18,7 +18,7 @@ bf:bf.c
 awibh:examples/awibh.bh
 	./brainhelp examples/awibh.bh awibh.bf
 	awib <awibh.bf >awibh.c
-	gcc -o awibh awibh.c
+	$(CC) -o awibh awibh.c
 	rm awibh.bf awibh.c
 
 .PHONY:clean indent install uninstall
