@@ -150,7 +150,7 @@ int pop()
 int bf_if(int addr)
 {
 	go(addr);
-	fprintf(fpout, "if[\n");
+	fprintf(fpout, "[\n");
 	push(addr);
 	return 0;
 }
@@ -159,14 +159,14 @@ int bf_endif()
 {
 	int addr = pop();
 	go(addr);
-	fprintf(fpout, "[-]]endif\n");
+	fprintf(fpout, "[->+<]]>[-<+>]<\n");
 	return 0;
 }
 
 int bf_loop(int addr)
 {
 	go(addr);
-	fprintf(fpout, "loop[\n");
+	fprintf(fpout, "[\n");
 	push(addr);
 	return 0;
 }
@@ -175,7 +175,7 @@ int bf_endloop()
 {
 	int addr = pop();
 	go(addr);
-	fprintf(fpout, "]endloop\n");
+	fprintf(fpout, "]\n");
 	return 0;
 }
 
