@@ -11,11 +11,14 @@ all:brainhelp awibh
 brainhelp:$(objects)
 	$(CC) -o brainhelp $(CFLAGS) $(objects)
 
-awibh:examples/awibh.bh
+awibh:awibh.c
+	$(CC) -o awibh $(CFLAGS) awibh.c
+
+awibh.c:examples/awibh.bh
 	./brainhelp examples/awibh.bh awibh.bf
-	awib <awibh.bf >awibh.c
-	$(CC) -o awibh awibh.c
-	rm awibh.bf awibh.c
+	$(CC) -o awibh $(CFLAGS) awibh.c
+	./awibh <awibh.bf >awibh.c
+	rm awibh.bf
 
 .PHONY:clean indent install uninstall
 clean:
