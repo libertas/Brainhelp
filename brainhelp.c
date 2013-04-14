@@ -322,7 +322,5 @@ int main(int argc, char **argv)	//USAGE: brainhelp [INPUT] [OUTPUT]
 			buffer[i] = (char)0;
 	}
 
-	//ending
-	fprintf(fpout, "\nEOF:0\n");
 	return 0;
 }
