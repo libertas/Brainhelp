@@ -1,8 +1,0 @@
-mov 9,41
-mov 100,10
-mov 2,32
-addp 2,100
-putc 2
-putc 100
-putc 9
-putc 100

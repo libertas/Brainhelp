@@ -1,6 +1,0 @@
-mov 0,2
-
-loop 0
-print 0
-sub 0,1
-endloop

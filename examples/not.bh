@@ -1,9 +1,0 @@
-mov 0,100
-not 0
-putc 0
-
-mov 1,10
-putc 1
-
-not 0
-putc 0
