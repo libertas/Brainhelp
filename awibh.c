@@ -1,6 +1,6 @@
 #include <stdio.h>
 int main(){
-char tape[30000]={0};
+char tape[0xffff]={0};
 int p=0;
 p++;
 tape[p]++;
@@ -1701,6 +1701,8 @@ putchar(tape[p]);
 while(tape[p]){
 tape[p]--;
 }
+p--;
+p++;
 tape[p]++;
 tape[p]++;
 tape[p]++;
@@ -2749,6 +2751,8 @@ putchar(tape[p]);
 while(tape[p]){
 tape[p]--;
 }
+p--;
+p++;
 tape[p]++;
 tape[p]++;
 tape[p]++;
@@ -4901,6 +4905,8 @@ putchar(tape[p]);
 while(tape[p]){
 tape[p]--;
 }
+p--;
+p++;
 tape[p]++;
 tape[p]++;
 tape[p]++;
@@ -5592,6 +5598,8 @@ putchar(tape[p]);
 while(tape[p]){
 tape[p]--;
 }
+p--;
+p++;
 tape[p]++;
 tape[p]++;
 tape[p]++;
@@ -5678,6 +5686,7 @@ p++;
 }
 p--;
 p--;
+tape[p]++;
 while(tape[p]){
 p++;
 p++;
@@ -6759,6 +6768,8 @@ putchar(tape[p]);
 while(tape[p]){
 tape[p]--;
 }
+p--;
+p++;
 tape[p]++;
 tape[p]++;
 tape[p]++;
@@ -7874,6 +7885,8 @@ putchar(tape[p]);
 while(tape[p]){
 tape[p]--;
 }
+p--;
+p++;
 tape[p]++;
 tape[p]++;
 tape[p]++;
@@ -8370,6 +8383,8 @@ putchar(tape[p]);
 while(tape[p]){
 tape[p]--;
 }
+p--;
+p++;
 tape[p]++;
 tape[p]++;
 tape[p]++;
@@ -8864,6 +8879,8 @@ putchar(tape[p]);
 while(tape[p]){
 tape[p]--;
 }
+p--;
+p++;
 tape[p]++;
 tape[p]++;
 tape[p]++;
@@ -10796,6 +10813,8 @@ putchar(tape[p]);
 while(tape[p]){
 tape[p]--;
 }
+p--;
+p++;
 tape[p]++;
 tape[p]++;
 tape[p]++;
@@ -12690,6 +12709,8 @@ putchar(tape[p]);
 while(tape[p]){
 tape[p]--;
 }
+p--;
+p++;
 tape[p]++;
 tape[p]++;
 tape[p]++;
@@ -14463,6 +14484,8 @@ putchar(tape[p]);
 while(tape[p]){
 tape[p]--;
 }
+p--;
+p++;
 tape[p]++;
 tape[p]++;
 tape[p]++;
@@ -14844,6 +14867,8 @@ putchar(tape[p]);
 while(tape[p]){
 tape[p]--;
 }
+p--;
+p++;
 tape[p]++;
 tape[p]++;
 tape[p]++;
@@ -15888,6 +15913,8 @@ putchar(tape[p]);
 while(tape[p]){
 tape[p]--;
 }
+p--;
+p++;
 tape[p]++;
 tape[p]++;
 tape[p]++;
@@ -16033,6 +16060,8 @@ putchar(tape[p]);
 while(tape[p]){
 tape[p]--;
 }
+p--;
+p++;
 tape[p]++;
 tape[p]++;
 tape[p]++;

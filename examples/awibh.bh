@@ -1,67 +1,68 @@
-//awibh.bh
-print #include <stdio.h>
-print int main(){
-print char tape[0xffff]={0};
-print int p=0;
+//awibh.bh 
+println #include <stdio.h>
+println int main(){
+println char tape[0xffff]={0};
+println int p=0;
 
 getc 0
 movp 2,0
+add 2,1
 loop 2
 
 	movp 1,0
 	sub 1,43 //compare the character to +
 	not 1
 	if 1
-		print tape[p]++;
+		println tape[p]++;
 	endif
 
 	movp 1,0
 	sub 1,45 //compare the character to -
 	not 1
 	if 1
-		print tape[p]--;
+		println tape[p]--;
 	endif
 
 	movp 1,0
 	sub 1,60 //compare the character to <
 	not 1
 	if 1
-		print p--;
+		println p--;
 	endif
 
 	movp 1,0
 	sub 1,62 //compare the character to >
 	not 1
 	if 1
-		print p++;
+		println p++;
 	endif
 
 	movp 1,0
 	sub 1,44 //compare the character to ,
 	not 1
 	if 1
-		print tape[p]=getchar();
+		println tape[p]=getchar();
 	endif
 
 	movp 1,0
 	sub 1,46 //compare the character to .
 	not 1
 	if 1
-		print putchar(tape[p]);
+		println putchar(tape[p]);
 	endif
 
 	movp 1,0
 	sub 1,91 //compare the character to [
 	not 1
 	if 1
-		print while(tape[p]){
+		println while(tape[p]){
 	endif
 
 	movp 1,0
 	sub 1,93 //compare the character to ]
 	not 1
 	if 1
-		print }
+		println }
 	endif
 
 	getc 0
@@ -73,5 +74,5 @@ endloop
 mov 0,10
 putc 0
 
-print return 0;
-print }
+println return 0;
+println }

@@ -118,6 +118,12 @@ int bf_not(int obj)
 	return 0;
 }
 
+int bf_putln()
+{
+	fprintf(fpout, ">++++++++++.[-]<\n");
+	return 0;
+}
+
 int bf_print(char *msg)
 {
 	fprintf(fpout, ">");
@@ -127,7 +133,14 @@ int bf_print(char *msg)
 		fprintf(fpout, ".");
 		fprintf(fpout, "[-]");
 	}
-	fprintf(fpout, "++++++++++.[-]<\n");
+	fprintf(fpout, "<\n");
+	return 0;
+}
+
+int bf_println(char *msg)
+{
+	bf_print(msg);
+	bf_putln();
 	return 0;
 }
 
@@ -303,6 +316,15 @@ int main(int argc, char **argv)	//USAGE: brainhelp [INPUT] [OUTPUT]
 			fscanf(fpin, " %[^\n]", msg);
 			bf_print(msg);
 		}
+		
+		else if (strcmp(buffer, "println") == 0) {
+			char msg[PRINT_LENGTH];
+			fscanf(fpin, " %[^\n]", msg);
+			bf_println(msg);
+		}
+
+		else if (strcmp(buffer, "putln") == 0)
+			bf_putln();
 
 		else if (strcmp(buffer, "bfcode") == 0) {
 			char msg[PRINT_LENGTH];
