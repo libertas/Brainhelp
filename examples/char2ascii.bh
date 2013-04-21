@@ -1,0 +1,54 @@
+//char2ascii
+mov 0,1
+loop 0
+	getc 1
+	movp 0,1
+	loop 1
+		sub 1,1
+		add 2,1
+		
+		//to see if cell 2 is large than 9
+		movp 5,2
+		sub 5,10
+		not 5
+		if 5
+			clean 2
+			add 3,1
+		endif
+		
+		//to see if cell 3 is large than 9
+		movp 5,3
+		sub 5,10
+		not 5
+		if 5
+			clean 3
+			add 4,1
+		endif
+		
+		//cell 4 is not able to be large than 9
+		
+		movp 5,1
+		not 5
+		if 5
+			putln
+			putc 0
+			print :
+			
+			add 4,48
+			putc 4
+			clean 4
+			
+			add 3,48
+			putc 3
+			clean 3
+			
+			add 2,48
+			putc 2
+			clean 2
+			
+			putln
+			getc 1
+			movp 0,1
+		endif
+	endloop
+endloop
